@@ -1,0 +1,947 @@
+Analysis & Synthesis report for processador_mips_uniciclo
+Thu Jun 20 23:02:08 2019
+Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis DSP Block Usage Summary
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Registers Packed Into Inferred Megafunctions
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for DataMemory:MemoriaDados|altsyncram:ram_rtl_0|altsyncram_cf41:auto_generated
+ 16. Parameter Settings for User Entity Instance: DivisorClock:ClkDiv
+ 17. Parameter Settings for User Entity Instance: InstructionMemory:MemoriaInstrucao
+ 18. Parameter Settings for User Entity Instance: DataMemory:MemoriaDados
+ 19. Parameter Settings for Inferred Entity Instance: DataMemory:MemoriaDados|altsyncram:ram_rtl_0
+ 20. Parameter Settings for Inferred Entity Instance: ALU:ULA|lpm_divide:Div0
+ 21. Parameter Settings for Inferred Entity Instance: ALU:ULA|lpm_mult:Mult0
+ 22. Parameter Settings for Inferred Entity Instance: ALU:ULA|lpm_divide:Mod0
+ 23. altsyncram Parameter Settings by Entity Instance
+ 24. lpm_mult Parameter Settings by Entity Instance
+ 25. Port Connectivity Checks: "Display7Segmentos:dez_milhao7seg"
+ 26. Port Connectivity Checks: "Display7Segmentos:und_milhao7seg"
+ 27. Port Connectivity Checks: "ConversorBCD:BCDConverterPC"
+ 28. Port Connectivity Checks: "ALU:ULA"
+ 29. Port Connectivity Checks: "Mux4_5bits:MuxBancoRegistrador"
+ 30. Port Connectivity Checks: "ADD:IncrementaPC"
+ 31. Post-Synthesis Netlist Statistics for Top Partition
+ 32. Elapsed Time Per Partition
+ 33. Analysis & Synthesis Messages
+ 34. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Jun 20 23:02:08 2019       ;
+; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
+; Revision Name                      ; processador_mips_uniciclo                   ;
+; Top-level Entity Name              ; CPU                                         ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 6,036                                       ;
+;     Total combinational functions  ; 5,060                                       ;
+;     Dedicated logic registers      ; 1,112                                       ;
+; Total registers                    ; 1112                                        ;
+; Total pins                         ; 78                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 8,192                                       ;
+; Embedded Multiplier 9-bit elements ; 2                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                               ;
++----------------------------------------------------------------------------+--------------------+---------------------------+
+; Option                                                                     ; Setting            ; Default Value             ;
++----------------------------------------------------------------------------+--------------------+---------------------------+
+; Device                                                                     ; EP4CE115F29C7      ;                           ;
+; Top-level entity name                                                      ; CPU                ; processador_mips_uniciclo ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone V                 ;
+; Use smart compilation                                                      ; On                 ; Off                       ;
+; Maximum processors allowed for parallel compilation                        ; All                ;                           ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                        ;
+; Enable compact report table                                                ; Off                ; Off                       ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto                      ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                       ;
+; Preserve fewer node names                                                  ; On                 ; On                        ;
+; Intel FPGA IP Evaluation Mode                                              ; Enable             ; Enable                    ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001              ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993                 ;
+; State Machine Processing                                                   ; Auto               ; Auto                      ;
+; Safe State Machine                                                         ; Off                ; Off                       ;
+; Extract Verilog State Machines                                             ; On                 ; On                        ;
+; Extract VHDL State Machines                                                ; On                 ; On                        ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                       ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000                      ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                       ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                        ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                        ;
+; Parallel Synthesis                                                         ; On                 ; On                        ;
+; DSP Block Balancing                                                        ; Auto               ; Auto                      ;
+; NOT Gate Push-Back                                                         ; On                 ; On                        ;
+; Power-Up Don't Care                                                        ; On                 ; On                        ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                       ;
+; Remove Duplicate Registers                                                 ; On                 ; On                        ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                       ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                       ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                       ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                       ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                       ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                        ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                       ;
+; Optimization Technique                                                     ; Balanced           ; Balanced                  ;
+; Carry Chain Length                                                         ; 70                 ; 70                        ;
+; Auto Carry Chains                                                          ; On                 ; On                        ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                        ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                       ;
+; Auto ROM Replacement                                                       ; On                 ; On                        ;
+; Auto RAM Replacement                                                       ; On                 ; On                        ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                        ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto                      ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto                      ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                        ;
+; Strict RAM Replacement                                                     ; Off                ; Off                       ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                        ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                       ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                        ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                       ;
+; Auto Resource Sharing                                                      ; Off                ; Off                       ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                       ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                       ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                       ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                        ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                       ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                        ;
+; Report Parameter Settings                                                  ; On                 ; On                        ;
+; Report Source Assignments                                                  ; On                 ; On                        ;
+; Report Connectivity Checks                                                 ; On                 ; On                        ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                       ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                         ;
+; Power Optimization During Synthesis                                        ; Normal compilation ; Normal compilation        ;
+; HDL message level                                                          ; Level2             ; Level2                    ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                       ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000                      ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000                      ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                       ;
+; Clock MUX Protection                                                       ; On                 ; On                        ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                       ;
+; Block Design Naming                                                        ; Auto               ; Auto                      ;
+; SDC constraint protection                                                  ; Off                ; Off                       ;
+; Synthesis Effort                                                           ; Auto               ; Auto                      ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                        ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                       ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium                    ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto                      ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                        ;
++----------------------------------------------------------------------------+--------------------+---------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
+;     Processor 5            ;   0.1%      ;
+;     Processor 6            ;   0.1%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                       ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                   ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
+; RegisterBank.v                   ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/RegisterBank.v             ;         ;
+; InstructionMemory.v              ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/InstructionMemory.v        ;         ;
+; DataMemory.v                     ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/DataMemory.v               ;         ;
+; ADD.v                            ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ADD.v                      ;         ;
+; Mux4_5bits.v                     ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/Mux4_5bits.v               ;         ;
+; Mux2_32bits.v                    ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/Mux2_32bits.v              ;         ;
+; PC.v                             ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/PC.v                       ;         ;
+; ALU.v                            ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ALU.v                      ;         ;
+; ExtensorSinal26_32.v             ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ExtensorSinal26_32.v       ;         ;
+; IOModule.v                       ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/IOModule.v                 ;         ;
+; Mux4_32bits.v                    ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/Mux4_32bits.v              ;         ;
+; ExtensorSinal16_32.v             ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ExtensorSinal16_32.v       ;         ;
+; ConversorBCD.v                   ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ConversorBCD.v             ;         ;
+; Display7Segmentos.v              ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/Display7Segmentos.v        ;         ;
+; CPU.v                            ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v                      ;         ;
+; PortaAND.v                       ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/PortaAND.v                 ;         ;
+; ControlUnit.v                    ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ControlUnit.v              ;         ;
+; DivisorClock.v                   ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/DivisorClock.v             ;         ;
+; StateMachine.v                   ; yes             ; User Verilog HDL File        ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/StateMachine.v             ;         ;
+; instrucoes.txt                   ; yes             ; Auto-Found File              ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/instrucoes.txt             ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/altsyncram.tdf          ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/stratix_ram_block.inc   ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_mux.inc             ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_decode.inc          ;         ;
+; aglobal171.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/aglobal171.inc          ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/a_rdenreg.inc           ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/altrom.inc              ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/altram.inc              ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/altdpram.inc            ;         ;
+; db/altsyncram_cf41.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/altsyncram_cf41.tdf     ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_divide.tdf          ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/abs_divider.inc         ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/sign_div_unsign.inc     ;         ;
+; db/lpm_divide_92p.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/lpm_divide_92p.tdf      ;         ;
+; db/abs_divider_4dg.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/abs_divider_4dg.tdf     ;         ;
+; db/alt_u_div_6af.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/alt_u_div_6af.tdf       ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/add_sub_7pc.tdf         ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/add_sub_8pc.tdf         ;         ;
+; db/lpm_abs_i0a.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/lpm_abs_i0a.tdf         ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_mult.tdf            ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/lpm_add_sub.inc         ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/multcore.inc            ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/bypassff.inc            ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.1/quartus/libraries/megafunctions/altshift.inc            ;         ;
+; db/mult_36t.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/mult_36t.tdf            ;         ;
+; db/lpm_divide_kcm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/lpm_divide_kcm.tdf      ;         ;
+; db/sign_div_unsign_9nh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/sign_div_unsign_9nh.tdf ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                               ;
++---------------------------------------------+-----------------------------+
+; Resource                                    ; Usage                       ;
++---------------------------------------------+-----------------------------+
+; Estimated Total logic elements              ; 6,036                       ;
+;                                             ;                             ;
+; Total combinational functions               ; 5060                        ;
+; Logic element usage by number of LUT inputs ;                             ;
+;     -- 4 input functions                    ; 2964                        ;
+;     -- 3 input functions                    ; 1842                        ;
+;     -- <=2 input functions                  ; 254                         ;
+;                                             ;                             ;
+; Logic elements by mode                      ;                             ;
+;     -- normal mode                          ; 3731                        ;
+;     -- arithmetic mode                      ; 1329                        ;
+;                                             ;                             ;
+; Total registers                             ; 1112                        ;
+;     -- Dedicated logic registers            ; 1112                        ;
+;     -- I/O registers                        ; 0                           ;
+;                                             ;                             ;
+; I/O pins                                    ; 78                          ;
+; Total memory bits                           ; 8192                        ;
+;                                             ;                             ;
+; Embedded Multiplier 9-bit elements          ; 2                           ;
+;                                             ;                             ;
+; Maximum fan-out node                        ; DivisorClock:ClkDiv|clk_out ;
+; Maximum fan-out                             ; 1112                        ;
+; Total fan-out                               ; 21675                       ;
+; Average fan-out                             ; 3.41                        ;
++---------------------------------------------+-----------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                            ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                ; Entity Name         ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |CPU                                      ; 5060 (0)            ; 1112 (0)                  ; 8192        ; 2            ; 0       ; 1         ; 78   ; 0            ; |CPU                                                                                                                               ; CPU                 ; work         ;
+;    |ADD:IncrementaPC|                     ; 32 (32)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ADD:IncrementaPC                                                                                                              ; ADD                 ; work         ;
+;    |ADD:SomaDesvio|                       ; 32 (32)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ADD:SomaDesvio                                                                                                                ; ADD                 ; work         ;
+;    |ALU:ULA|                              ; 2644 (251)          ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |CPU|ALU:ULA                                                                                                                       ; ALU                 ; work         ;
+;       |lpm_divide:Div0|                   ; 1258 (0)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_divide:Div0                                                                                                       ; lpm_divide          ; work         ;
+;          |lpm_divide_92p:auto_generated|  ; 1258 (0)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_divide:Div0|lpm_divide_92p:auto_generated                                                                         ; lpm_divide_92p      ; work         ;
+;             |abs_divider_4dg:divider|     ; 1258 (62)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_divide:Div0|lpm_divide_92p:auto_generated|abs_divider_4dg:divider                                                 ; abs_divider_4dg     ; work         ;
+;                |alt_u_div_6af:divider|    ; 1084 (1081)         ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_divide:Div0|lpm_divide_92p:auto_generated|abs_divider_4dg:divider|alt_u_div_6af:divider                           ; alt_u_div_6af       ; work         ;
+;                   |add_sub_7pc:add_sub_0| ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_divide:Div0|lpm_divide_92p:auto_generated|abs_divider_4dg:divider|alt_u_div_6af:divider|add_sub_7pc:add_sub_0     ; add_sub_7pc         ; work         ;
+;                   |add_sub_8pc:add_sub_1| ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_divide:Div0|lpm_divide_92p:auto_generated|abs_divider_4dg:divider|alt_u_div_6af:divider|add_sub_8pc:add_sub_1     ; add_sub_8pc         ; work         ;
+;                |lpm_abs_i0a:my_abs_den|   ; 67 (67)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_divide:Div0|lpm_divide_92p:auto_generated|abs_divider_4dg:divider|lpm_abs_i0a:my_abs_den                          ; lpm_abs_i0a         ; work         ;
+;                |lpm_abs_i0a:my_abs_num|   ; 45 (45)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_divide:Div0|lpm_divide_92p:auto_generated|abs_divider_4dg:divider|lpm_abs_i0a:my_abs_num                          ; lpm_abs_i0a         ; work         ;
+;       |lpm_divide:Mod0|                   ; 1135 (0)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_divide:Mod0                                                                                                       ; lpm_divide          ; work         ;
+;          |lpm_divide_kcm:auto_generated|  ; 1135 (0)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_divide:Mod0|lpm_divide_kcm:auto_generated                                                                         ; lpm_divide_kcm      ; work         ;
+;             |sign_div_unsign_9nh:divider| ; 1135 (0)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_divide:Mod0|lpm_divide_kcm:auto_generated|sign_div_unsign_9nh:divider                                             ; sign_div_unsign_9nh ; work         ;
+;                |alt_u_div_6af:divider|    ; 1135 (1134)         ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_divide:Mod0|lpm_divide_kcm:auto_generated|sign_div_unsign_9nh:divider|alt_u_div_6af:divider                       ; alt_u_div_6af       ; work         ;
+;                   |add_sub_8pc:add_sub_1| ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_divide:Mod0|lpm_divide_kcm:auto_generated|sign_div_unsign_9nh:divider|alt_u_div_6af:divider|add_sub_8pc:add_sub_1 ; add_sub_8pc         ; work         ;
+;       |lpm_mult:Mult0|                    ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_mult:Mult0                                                                                                        ; lpm_mult            ; work         ;
+;          |mult_36t:auto_generated|        ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |CPU|ALU:ULA|lpm_mult:Mult0|mult_36t:auto_generated                                                                                ; mult_36t            ; work         ;
+;    |ControlUnit:CRTL|                     ; 55 (55)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ControlUnit:CRTL                                                                                                              ; ControlUnit         ; work         ;
+;    |ConversorBCD:BCDConverterPC|          ; 258 (258)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ConversorBCD:BCDConverterPC                                                                                                   ; ConversorBCD        ; work         ;
+;    |ConversorBCD:BCDConverter|            ; 564 (564)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|ConversorBCD:BCDConverter                                                                                                     ; ConversorBCD        ; work         ;
+;    |DataMemory:MemoriaDados|              ; 0 (0)               ; 0 (0)                     ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|DataMemory:MemoriaDados                                                                                                       ; DataMemory          ; work         ;
+;       |altsyncram:ram_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|DataMemory:MemoriaDados|altsyncram:ram_rtl_0                                                                                  ; altsyncram          ; work         ;
+;          |altsyncram_cf41:auto_generated| ; 0 (0)               ; 0 (0)                     ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|DataMemory:MemoriaDados|altsyncram:ram_rtl_0|altsyncram_cf41:auto_generated                                                   ; altsyncram_cf41     ; work         ;
+;    |Display7Segmentos:cent_milhar7seg|    ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|Display7Segmentos:cent_milhar7seg                                                                                             ; Display7Segmentos   ; work         ;
+;    |Display7Segmentos:centena7seg|        ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|Display7Segmentos:centena7seg                                                                                                 ; Display7Segmentos   ; work         ;
+;    |Display7Segmentos:dez_milhar7seg|     ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|Display7Segmentos:dez_milhar7seg                                                                                              ; Display7Segmentos   ; work         ;
+;    |Display7Segmentos:dezena7segPC|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|Display7Segmentos:dezena7segPC                                                                                                ; Display7Segmentos   ; work         ;
+;    |Display7Segmentos:dezena7seg|         ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|Display7Segmentos:dezena7seg                                                                                                  ; Display7Segmentos   ; work         ;
+;    |Display7Segmentos:und_milhar7seg|     ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|Display7Segmentos:und_milhar7seg                                                                                              ; Display7Segmentos   ; work         ;
+;    |Display7Segmentos:unidade7segPC|      ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|Display7Segmentos:unidade7segPC                                                                                               ; Display7Segmentos   ; work         ;
+;    |Display7Segmentos:unidade7seg|        ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|Display7Segmentos:unidade7seg                                                                                                 ; Display7Segmentos   ; work         ;
+;    |DivisorClock:ClkDiv|                  ; 42 (42)             ; 33 (33)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|DivisorClock:ClkDiv                                                                                                           ; DivisorClock        ; work         ;
+;    |IOModule:EntradaSaida|                ; 14 (14)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|IOModule:EntradaSaida                                                                                                         ; IOModule            ; work         ;
+;    |InstructionMemory:MemoriaInstrucao|   ; 126 (126)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|InstructionMemory:MemoriaInstrucao                                                                                            ; InstructionMemory   ; work         ;
+;    |Mux2_32bits:MuxEntradaULA|            ; 32 (32)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|Mux2_32bits:MuxEntradaULA                                                                                                     ; Mux2_32bits         ; work         ;
+;    |Mux4_32bits:MuxWriteRegister|         ; 269 (269)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|Mux4_32bits:MuxWriteRegister                                                                                                  ; Mux4_32bits         ; work         ;
+;    |Mux4_5bits:MuxBancoRegistrador|       ; 9 (9)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|Mux4_5bits:MuxBancoRegistrador                                                                                                ; Mux4_5bits          ; work         ;
+;    |PC:ContadorPrograma|                  ; 54 (54)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|PC:ContadorPrograma                                                                                                           ; PC                  ; work         ;
+;    |PortaAND:ANDPort|                     ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|PortaAND:ANDPort                                                                                                              ; PortaAND            ; work         ;
+;    |RegisterBank:BancoRegistradores|      ; 870 (870)           ; 1013 (1013)               ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|RegisterBank:BancoRegistradores                                                                                               ; RegisterBank        ; work         ;
+;    |StateMachine:stm|                     ; 2 (2)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU|StateMachine:stm                                                                                                              ; StateMachine        ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                      ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                                                   ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+------+
+; DataMemory:MemoriaDados|altsyncram:ram_rtl_0|altsyncram_cf41:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 256          ; 32           ; --           ; --           ; 8192 ; None ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 0           ;
+; Simple Multipliers (18-bit)           ; 1           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 2           ;
+; Signed Embedded Multipliers           ; 1           ;
+; Unsigned Embedded Multipliers         ; 0           ;
+; Mixed Sign Embedded Multipliers       ; 0           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                        ;
++-----------------------------------------------+-----------------------------------------------------------+
+; Register name                                 ; Reason for Removal                                        ;
++-----------------------------------------------+-----------------------------------------------------------+
+; RegisterBank:BancoRegistradores|write_addr[4] ; Merged with RegisterBank:BancoRegistradores|write_addr[3] ;
+; RegisterBank:BancoRegistradores|registers~672 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~608 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~544 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~736 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~640 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~576 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~512 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~704 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~320 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~288 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~256 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~352 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~416 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~448 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~384 ; Lost fanout                                               ;
+; RegisterBank:BancoRegistradores|registers~480 ; Lost fanout                                               ;
+; Total Number of Removed Registers = 17        ;                                                           ;
++-----------------------------------------------+-----------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1112  ;
+; Number of registers using Synchronous Clear  ; 64    ;
+; Number of registers using Synchronous Load   ; 14    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1072  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; DivisorClock:ClkDiv|clk_out            ; 1112    ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                      ;
++----------------------------------------+-----------------------------------+------+
+; Register Name                          ; Megafunction                      ; Type ;
++----------------------------------------+-----------------------------------+------+
+; DataMemory:MemoriaDados|addr_reg[0..7] ; DataMemory:MemoriaDados|ram_rtl_0 ; RAM  ;
++----------------------------------------+-----------------------------------+------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |CPU|RegisterBank:BancoRegistradores|write_addr[1] ;
+; 6:1                ; 14 bits   ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; Yes        ; |CPU|PC:ContadorPrograma|pc_out[14]                ;
+; 6:1                ; 18 bits   ; 72 LEs        ; 54 LEs               ; 18 LEs                 ; Yes        ; |CPU|PC:ContadorPrograma|pc_out[16]                ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; No         ; |CPU|Mux4_32bits:MuxWriteRegister|Mux28            ;
+; 32:1               ; 4 bits    ; 84 LEs        ; 40 LEs               ; 44 LEs                 ; No         ; |CPU|ControlUnit:CRTL|Selector6                    ;
+; 35:1               ; 6 bits    ; 138 LEs       ; 48 LEs               ; 90 LEs                 ; No         ; |CPU|ALU:ULA|Mux25                                 ;
+; 38:1               ; 2 bits    ; 50 LEs        ; 20 LEs               ; 30 LEs                 ; No         ; |CPU|Mux4_32bits:MuxWriteRegister|Mux1             ;
+; 38:1               ; 14 bits   ; 350 LEs       ; 140 LEs              ; 210 LEs                ; No         ; |CPU|Mux4_32bits:MuxWriteRegister|Mux15            ;
+; 40:1               ; 8 bits    ; 208 LEs       ; 80 LEs               ; 128 LEs                ; No         ; |CPU|Mux4_32bits:MuxWriteRegister|Mux17            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Source assignments for DataMemory:MemoriaDados|altsyncram:ram_rtl_0|altsyncram_cf41:auto_generated ;
++---------------------------------+--------------------+------+--------------------------------------+
+; Assignment                      ; Value              ; From ; To                                   ;
++---------------------------------+--------------------+------+--------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                    ;
++---------------------------------+--------------------+------+--------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DivisorClock:ClkDiv    ;
++----------------+----------------------------------+-----------------+
+; Parameter Name ; Value                            ; Type            ;
++----------------+----------------------------------+-----------------+
+; divisor        ; 00000001011111010111100001000000 ; Unsigned Binary ;
++----------------+----------------------------------+-----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: InstructionMemory:MemoriaInstrucao ;
++----------------+-------+--------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                   ;
++----------------+-------+--------------------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                                         ;
+; ADDR_WIDTH     ; 8     ; Signed Integer                                         ;
++----------------+-------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DataMemory:MemoriaDados ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                              ;
+; ADDR_WIDTH     ; 8     ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: DataMemory:MemoriaDados|altsyncram:ram_rtl_0 ;
++------------------------------------+----------------------+-----------------------------------+
+; Parameter Name                     ; Value                ; Type                              ;
++------------------------------------+----------------------+-----------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                           ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                    ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                           ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                           ;
+; WIDTH_A                            ; 32                   ; Untyped                           ;
+; WIDTHAD_A                          ; 8                    ; Untyped                           ;
+; NUMWORDS_A                         ; 256                  ; Untyped                           ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                           ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                           ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                           ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                           ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                           ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                           ;
+; WIDTH_B                            ; 1                    ; Untyped                           ;
+; WIDTHAD_B                          ; 1                    ; Untyped                           ;
+; NUMWORDS_B                         ; 1                    ; Untyped                           ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                           ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                           ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                           ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                           ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                           ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                           ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                           ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                           ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                           ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                           ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                           ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                           ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                           ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                           ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                           ;
+; BYTE_SIZE                          ; 8                    ; Untyped                           ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                           ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                           ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                           ;
+; INIT_FILE                          ; UNUSED               ; Untyped                           ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                           ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                           ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                           ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                           ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                           ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                           ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                           ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                           ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                           ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                           ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                           ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                           ;
+; CBXI_PARAMETER                     ; altsyncram_cf41      ; Untyped                           ;
++------------------------------------+----------------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ALU:ULA|lpm_divide:Div0 ;
++------------------------+----------------+--------------------------------+
+; Parameter Name         ; Value          ; Type                           ;
++------------------------+----------------+--------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                        ;
+; LPM_WIDTHD             ; 32             ; Untyped                        ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                        ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                        ;
+; LPM_PIPELINE           ; 0              ; Untyped                        ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                        ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                        ;
+; CBXI_PARAMETER         ; lpm_divide_92p ; Untyped                        ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                        ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                        ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                     ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                   ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                   ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                 ;
++------------------------+----------------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ALU:ULA|lpm_mult:Mult0             ;
++------------------------------------------------+--------------+---------------------+
+; Parameter Name                                 ; Value        ; Type                ;
++------------------------------------------------+--------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 16           ; Untyped             ;
+; LPM_WIDTHB                                     ; 16           ; Untyped             ;
+; LPM_WIDTHP                                     ; 32           ; Untyped             ;
+; LPM_WIDTHR                                     ; 32           ; Untyped             ;
+; LPM_WIDTHS                                     ; 1            ; Untyped             ;
+; LPM_REPRESENTATION                             ; SIGNED       ; Untyped             ;
+; LPM_PIPELINE                                   ; 0            ; Untyped             ;
+; LATENCY                                        ; 0            ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped             ;
+; USE_EAB                                        ; OFF          ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5            ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_36t     ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped             ;
++------------------------------------------------+--------------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ALU:ULA|lpm_divide:Mod0 ;
++------------------------+----------------+--------------------------------+
+; Parameter Name         ; Value          ; Type                           ;
++------------------------+----------------+--------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                        ;
+; LPM_WIDTHD             ; 32             ; Untyped                        ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                        ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                        ;
+; LPM_PIPELINE           ; 0              ; Untyped                        ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                        ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                        ;
+; CBXI_PARAMETER         ; lpm_divide_kcm ; Untyped                        ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                        ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                        ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                     ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                   ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                   ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                 ;
++------------------------+----------------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                         ;
++-------------------------------------------+----------------------------------------------+
+; Name                                      ; Value                                        ;
++-------------------------------------------+----------------------------------------------+
+; Number of entity instances                ; 1                                            ;
+; Entity Instance                           ; DataMemory:MemoriaDados|altsyncram:ram_rtl_0 ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                  ;
+;     -- WIDTH_A                            ; 32                                           ;
+;     -- NUMWORDS_A                         ; 256                                          ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                 ;
+;     -- WIDTH_B                            ; 1                                            ;
+;     -- NUMWORDS_B                         ; 1                                            ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                       ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                 ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                         ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                    ;
++-------------------------------------------+----------------------------------------------+
+
+
++----------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                 ;
++---------------------------------------+------------------------+
+; Name                                  ; Value                  ;
++---------------------------------------+------------------------+
+; Number of entity instances            ; 1                      ;
+; Entity Instance                       ; ALU:ULA|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 16                     ;
+;     -- LPM_WIDTHB                     ; 16                     ;
+;     -- LPM_WIDTHP                     ; 32                     ;
+;     -- LPM_REPRESENTATION             ; SIGNED                 ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                     ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                     ;
+;     -- USE_EAB                        ; OFF                    ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                   ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                     ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                     ;
++---------------------------------------+------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Display7Segmentos:dez_milhao7seg"                                                                                         ;
++-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                                  ;
++-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+; saida ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (1 bits) it drives; bit(s) "saida[6..1]" have no fanouts ;
+; saida ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                      ;
++-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Display7Segmentos:und_milhao7seg"                                                                                         ;
++-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                                  ;
++-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+; saida ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (1 bits) it drives; bit(s) "saida[6..1]" have no fanouts ;
+; saida ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                      ;
++-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ConversorBCD:BCDConverterPC"                                                                                    ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                                                  ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; dez_milhao  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; und_milhao  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; cent_milhar ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; dez_milhar  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; und_milhar  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; centena     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; neg         ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU:ULA"                                                                                                                                      ;
++-------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                                                                                                                       ;
++-------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; shamt ; Input ; Warning  ; Input port expression (5 bits) is smaller than the input port (6 bits) it drives.  Extra input bit(s) "shamt[5..5]" will be connected to GND. ;
++-------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------+
+; Port Connectivity Checks: "Mux4_5bits:MuxBancoRegistrador" ;
++------+-------+----------+----------------------------------+
+; Port ; Type  ; Severity ; Details                          ;
++------+-------+----------+----------------------------------+
+; C    ; Input ; Info     ; Stuck at VCC                     ;
++------+-------+----------+----------------------------------+
+
+
++----------------------------------------------+
+; Port Connectivity Checks: "ADD:IncrementaPC" ;
++----------+-------+----------+----------------+
+; Port     ; Type  ; Severity ; Details        ;
++----------+-------+----------+----------------+
+; X[31..1] ; Input ; Info     ; Stuck at GND   ;
+; X[0]     ; Input ; Info     ; Stuck at VCC   ;
++----------+-------+----------+----------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 78                          ;
+; cycloneiii_ff         ; 1112                        ;
+;     ENA               ; 1040                        ;
+;     ENA SCLR          ; 18                          ;
+;     ENA SCLR SLD      ; 14                          ;
+;     SCLR              ; 32                          ;
+;     plain             ; 8                           ;
+; cycloneiii_lcell_comb ; 5068                        ;
+;     arith             ; 1329                        ;
+;         2 data inputs ; 146                         ;
+;         3 data inputs ; 1183                        ;
+;     normal            ; 3739                        ;
+;         0 data inputs ; 60                          ;
+;         1 data inputs ; 13                          ;
+;         2 data inputs ; 43                          ;
+;         3 data inputs ; 659                         ;
+;         4 data inputs ; 2964                        ;
+; cycloneiii_mac_mult   ; 1                           ;
+; cycloneiii_mac_out    ; 1                           ;
+; cycloneiii_ram_block  ; 32                          ;
+;                       ;                             ;
+; Max LUT depth         ; 152.60                      ;
+; Average LUT depth     ; 113.76                      ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:10     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+    Info: Processing started: Thu Jun 20 23:01:49 2019
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off processador_mips_uniciclo -c processador_mips_uniciclo
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file registerbank.v
+    Info (12023): Found entity 1: RegisterBank File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/RegisterBank.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file instructionmemory.v
+    Info (12023): Found entity 1: InstructionMemory File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/InstructionMemory.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file datamemory.v
+    Info (12023): Found entity 1: DataMemory File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/DataMemory.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file add.v
+    Info (12023): Found entity 1: ADD File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ADD.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file mux4_5bits.v
+    Info (12023): Found entity 1: Mux4_5bits File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/Mux4_5bits.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file mux2_32bits.v
+    Info (12023): Found entity 1: Mux2_32bits File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/Mux2_32bits.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file pc.v
+    Info (12023): Found entity 1: PC File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/PC.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file alu.v
+    Info (12023): Found entity 1: ALU File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ALU.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file extensorsinal26_32.v
+    Info (12023): Found entity 1: ExtensorSinal26_32 File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ExtensorSinal26_32.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file iomodule.v
+    Info (12023): Found entity 1: IOModule File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/IOModule.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file mux4_32bits.v
+    Info (12023): Found entity 1: Mux4_32bits File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/Mux4_32bits.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file extensorsinal16_32.v
+    Info (12023): Found entity 1: ExtensorSinal16_32 File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ExtensorSinal16_32.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file conversorbcd.v
+    Info (12023): Found entity 1: ConversorBCD File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ConversorBCD.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file display7segmentos.v
+    Info (12023): Found entity 1: Display7Segmentos File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/Display7Segmentos.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file cpu.v
+    Info (12023): Found entity 1: CPU File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file portaand.v
+    Info (12023): Found entity 1: PortaAND File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/PortaAND.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file controlunit.v
+    Info (12023): Found entity 1: ControlUnit File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ControlUnit.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file debounce.v
+    Info (12023): Found entity 1: DeBounce File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/DeBounce.v Line: 89
+Info (12021): Found 1 design units, including 1 entities, in source file halt.v
+    Info (12023): Found entity 1: Halt File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/Halt.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file divisorclock.v
+    Info (12023): Found entity 1: DivisorClock File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/DivisorClock.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file statemachine.v
+    Info (12023): Found entity 1: StateMachine File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/StateMachine.v Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at CPU.v(79): created implicit net for "und_milhao7" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 79
+Warning (10236): Verilog HDL Implicit Net warning at CPU.v(80): created implicit net for "dez_milhao7" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 80
+Info (12127): Elaborating entity "CPU" for the top level hierarchy
+Info (12128): Elaborating entity "DivisorClock" for hierarchy "DivisorClock:ClkDiv" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 26
+Info (12128): Elaborating entity "ControlUnit" for hierarchy "ControlUnit:CRTL" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 28
+Info (12128): Elaborating entity "StateMachine" for hierarchy "StateMachine:stm" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 30
+Info (12128): Elaborating entity "PC" for hierarchy "PC:ContadorPrograma" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 32
+Info (12128): Elaborating entity "ADD" for hierarchy "ADD:IncrementaPC" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 34
+Info (12128): Elaborating entity "InstructionMemory" for hierarchy "InstructionMemory:MemoriaInstrucao" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 36
+Warning (10850): Verilog HDL warning at InstructionMemory.v(12): number of words (68) in memory file does not match the number of elements in the address range [0:255] File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/InstructionMemory.v Line: 12
+Warning (10030): Net "rom.data_a" at InstructionMemory.v(8) has no driver or initial value, using a default initial value '0' File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/InstructionMemory.v Line: 8
+Warning (10030): Net "rom.waddr_a" at InstructionMemory.v(8) has no driver or initial value, using a default initial value '0' File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/InstructionMemory.v Line: 8
+Warning (10030): Net "rom.we_a" at InstructionMemory.v(8) has no driver or initial value, using a default initial value '0' File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/InstructionMemory.v Line: 8
+Info (12128): Elaborating entity "Mux4_5bits" for hierarchy "Mux4_5bits:MuxBancoRegistrador" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 38
+Info (12128): Elaborating entity "RegisterBank" for hierarchy "RegisterBank:BancoRegistradores" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 40
+Info (12128): Elaborating entity "ExtensorSinal16_32" for hierarchy "ExtensorSinal16_32:Extensor16a32" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 42
+Info (12128): Elaborating entity "ExtensorSinal26_32" for hierarchy "ExtensorSinal26_32:Extensor26a32" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 44
+Info (12128): Elaborating entity "Mux2_32bits" for hierarchy "Mux2_32bits:MuxEntradaULA" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 46
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:ULA" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 48
+Info (12128): Elaborating entity "PortaAND" for hierarchy "PortaAND:ANDPort" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 52
+Info (12128): Elaborating entity "DataMemory" for hierarchy "DataMemory:MemoriaDados" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 60
+Info (12128): Elaborating entity "IOModule" for hierarchy "IOModule:EntradaSaida" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 62
+Info (12128): Elaborating entity "Mux4_32bits" for hierarchy "Mux4_32bits:MuxWriteRegister" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 64
+Info (12128): Elaborating entity "ConversorBCD" for hierarchy "ConversorBCD:BCDConverterPC" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 66
+Warning (10230): Verilog HDL assignment warning at ConversorBCD.v(64): truncated value with size 32 to match size of target (4) File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ConversorBCD.v Line: 64
+Warning (10230): Verilog HDL assignment warning at ConversorBCD.v(61): truncated value with size 32 to match size of target (4) File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ConversorBCD.v Line: 61
+Warning (10230): Verilog HDL assignment warning at ConversorBCD.v(58): truncated value with size 32 to match size of target (4) File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ConversorBCD.v Line: 58
+Warning (10230): Verilog HDL assignment warning at ConversorBCD.v(55): truncated value with size 32 to match size of target (4) File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ConversorBCD.v Line: 55
+Warning (10230): Verilog HDL assignment warning at ConversorBCD.v(52): truncated value with size 32 to match size of target (4) File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ConversorBCD.v Line: 52
+Warning (10230): Verilog HDL assignment warning at ConversorBCD.v(49): truncated value with size 32 to match size of target (4) File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ConversorBCD.v Line: 49
+Warning (10230): Verilog HDL assignment warning at ConversorBCD.v(46): truncated value with size 32 to match size of target (4) File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ConversorBCD.v Line: 46
+Warning (10230): Verilog HDL assignment warning at ConversorBCD.v(43): truncated value with size 32 to match size of target (4) File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ConversorBCD.v Line: 43
+Info (12128): Elaborating entity "Display7Segmentos" for hierarchy "Display7Segmentos:unidade7segPC" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/CPU.v Line: 70
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "RegisterBank:BancoRegistradores|registers" is uninferred due to asynchronous read logic File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/RegisterBank.v Line: 9
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/processador_mips_uniciclo.ram0_InstructionMemory_d1968ec4.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/processador_mips_uniciclo.ram0_RegisterBank_879234cc.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "DataMemory:MemoriaDados|ram_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to SINGLE_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 256
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_A set to NONE
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+Info (278001): Inferred 3 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ALU:ULA|Div0" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ALU.v Line: 23
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "ALU:ULA|Mult0" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ALU.v Line: 25
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ALU:ULA|Mod0" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ALU.v Line: 74
+Info (12130): Elaborated megafunction instantiation "DataMemory:MemoriaDados|altsyncram:ram_rtl_0"
+Info (12133): Instantiated megafunction "DataMemory:MemoriaDados|altsyncram:ram_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "SINGLE_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "8"
+    Info (12134): Parameter "NUMWORDS_A" = "256"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_cf41.tdf
+    Info (12023): Found entity 1: altsyncram_cf41 File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/altsyncram_cf41.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "ALU:ULA|lpm_divide:Div0" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ALU.v Line: 23
+Info (12133): Instantiated megafunction "ALU:ULA|lpm_divide:Div0" with the following parameter: File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ALU.v Line: 23
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_92p.tdf
+    Info (12023): Found entity 1: lpm_divide_92p File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/lpm_divide_92p.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_4dg.tdf
+    Info (12023): Found entity 1: abs_divider_4dg File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/abs_divider_4dg.tdf Line: 26
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_6af.tdf
+    Info (12023): Found entity 1: alt_u_div_6af File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/alt_u_div_6af.tdf Line: 26
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/add_sub_7pc.tdf Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/add_sub_8pc.tdf Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_i0a.tdf
+    Info (12023): Found entity 1: lpm_abs_i0a File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/lpm_abs_i0a.tdf Line: 24
+Info (12130): Elaborated megafunction instantiation "ALU:ULA|lpm_mult:Mult0" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ALU.v Line: 25
+Info (12133): Instantiated megafunction "ALU:ULA|lpm_mult:Mult0" with the following parameter: File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ALU.v Line: 25
+    Info (12134): Parameter "LPM_WIDTHA" = "16"
+    Info (12134): Parameter "LPM_WIDTHB" = "16"
+    Info (12134): Parameter "LPM_WIDTHP" = "32"
+    Info (12134): Parameter "LPM_WIDTHR" = "32"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_36t.tdf
+    Info (12023): Found entity 1: mult_36t File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/mult_36t.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "ALU:ULA|lpm_divide:Mod0" File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ALU.v Line: 74
+Info (12133): Instantiated megafunction "ALU:ULA|lpm_divide:Mod0" with the following parameter: File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/ALU.v Line: 74
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_kcm.tdf
+    Info (12023): Found entity 1: lpm_divide_kcm File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/lpm_divide_kcm.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_9nh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_9nh File: C:/Users/Matheus/Desktop/processador_mips_uniciclo8/db/sign_div_unsign_9nh.tdf Line: 24
+Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (13014): Ignored 62 buffer(s)
+    Info (13016): Ignored 62 CARRY_SUM buffer(s)
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 16 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/Matheus/Desktop/processador_mips_uniciclo8/output_files/processador_mips_uniciclo.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 6212 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 19 input pins
+    Info (21059): Implemented 59 output pins
+    Info (21061): Implemented 6100 logic cells
+    Info (21064): Implemented 32 RAM segments
+    Info (21062): Implemented 2 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 17 warnings
+    Info: Peak virtual memory: 4859 megabytes
+    Info: Processing ended: Thu Jun 20 23:02:08 2019
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:31
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/Matheus/Desktop/processador_mips_uniciclo8/output_files/processador_mips_uniciclo.map.smsg.
+
+
