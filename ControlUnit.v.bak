@@ -40,11 +40,6 @@ begin
 					6'b001001: ALUOp <= 5'b01000;//sll
 					6'b001010: ALUOp <= 5'b01001;//srl
 					6'b001011: ALUOp <= 5'b01111;//mod
-					6'b001100: ALUOp <= 5'b10001;//sgt
-					6'b001101: ALUOp <= 5'b10010;//slet
-					6'b001110: ALUOp <= 5'b10011;//sget
-					6'b001111: ALUOp <= 5'b10100;//set
-					6'b001000: ALUOp <= 5'b10101;//sdf
 					default: ALUOp <= 5'b00000;
 				endcase
 			end

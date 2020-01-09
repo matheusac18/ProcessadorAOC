@@ -77,41 +77,6 @@ module ALU(ALUOp, opA, opB, zero, shamt, result);
 						begin
 							result = {opB[15:0],opA[15:0]};
 						end
-			5'b10001: //set greater than
-						begin
-							if(opA>opB)
-								result = 1;
-							else
-								result = 0;
-						end
-			5'b10010: //set less/equal than
-						begin
-							if(opA<=opB)
-								result = 1;
-							else
-								result = 0;
-						end
-			5'b10011: //set greater/equal than
-						begin
-							if(opA>=opB)
-								result = 1;
-							else
-								result = 0;
-						end
-			5'b10100: //set equal than
-						begin
-							if(opA==opB)
-								result = 1;
-							else
-								result = 0;
-						end
-			5'b10101: //set different than
-						begin
-							if(opA!=opB)
-								result = 1;
-							else
-								result = 0;
-						end
 		
 			default: result <= 32'd0;
 						
