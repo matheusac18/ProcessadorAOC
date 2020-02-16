@@ -44,7 +44,7 @@ begin
 					6'b001101: ALUOp <= 5'b10010;//slet
 					6'b001110: ALUOp <= 5'b10011;//sget
 					6'b001111: ALUOp <= 5'b10100;//set
-					6'b001000: ALUOp <= 5'b10101;//sdf
+					6'b010000: ALUOp <= 5'b10101;//sdf
 					default: ALUOp <= 5'b00000;
 				endcase
 			end
@@ -383,6 +383,86 @@ begin
 				ALUOp <= 5'b00000;
 				inputInst = 0;
 				outputInst = 1;
+			end
+		6'b010110://SGTI
+			begin
+				halt <= 0;
+				RegWrite <= 1;
+				RegDst <= 2'b00;
+				ALUSrc <= 1;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b10;
+				ALUOp <= 5'b10001;
+				inputInst = 0;
+				outputInst = 0;
+			end
+		6'b010111://SLETI
+			begin
+				halt <= 0;
+				RegWrite <= 1;
+				RegDst <= 2'b00;
+				ALUSrc <= 1;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b10;
+				ALUOp <= 5'b10010;
+				inputInst = 0;
+				outputInst = 0;
+			end
+		6'b011000://SGETI
+			begin
+				halt <= 0;
+				RegWrite <= 1;
+				RegDst <= 2'b00;
+				ALUSrc <= 1;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b10;
+				ALUOp <= 5'b10011;
+				inputInst = 0;
+				outputInst = 0;
+			end
+		6'b011001://SETI
+			begin
+				halt <= 0;
+				RegWrite <= 1;
+				RegDst <= 2'b00;
+				ALUSrc <= 1;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b10;
+				ALUOp <= 5'b10100;
+				inputInst = 0;
+				outputInst = 0;
+			end
+		6'b011010://SDTI
+			begin
+				halt <= 0;
+				RegWrite <= 1;
+				RegDst <= 2'b00;
+				ALUSrc <= 1;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b10;
+				ALUOp <= 5'b10101;
+				inputInst = 0;
+				outputInst = 0;
 			end
 		default:
 			begin

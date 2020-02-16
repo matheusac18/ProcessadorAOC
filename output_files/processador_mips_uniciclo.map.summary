@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Thu Jun 20 23:02:08 2019
-Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Analysis & Synthesis Status : Successful - Sun Feb 16 04:10:55 2020
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : processador_mips_uniciclo
 Top-level Entity Name : CPU
 Family : Cyclone IV E
-Total logic elements : 6,036
-    Total combinational functions : 5,060
-    Dedicated logic registers : 1,112
-Total registers : 1112
+Total logic elements : 343
+    Total combinational functions : 343
+    Dedicated logic registers : 65
+Total registers : 65
 Total pins : 78
 Total virtual pins : 0
-Total memory bits : 8,192
-Embedded Multiplier 9-bit elements : 2
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
 Total PLLs : 0
