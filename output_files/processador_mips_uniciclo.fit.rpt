@@ -1,5 +1,5 @@
 Fitter report for processador_mips_uniciclo
-Sun Feb 16 04:11:08 2020
+Wed Feb 26 23:21:05 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Sun Feb 16 04:11:08 2020       ;
+; Fitter Status                      ; Successful - Wed Feb 26 23:21:05 2020       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; processador_mips_uniciclo                   ;
 ; Top-level Entity Name              ; CPU                                         ;
@@ -159,7 +159,8 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-6         ;   0.2%      ;
+;     Processor 2            ;   0.2%      ;
+;     Processors 3-6         ;   0.2%      ;
 +----------------------------+-------------+
 
 
@@ -1955,8 +1956,8 @@ Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:00
 Info (144001): Generated suppressed messages file C:/Users/Matheus/Documents/GitHub/ProcessadorMIPS/output_files/processador_mips_uniciclo.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 3 warnings
     Info: Peak virtual memory: 5821 megabytes
-    Info: Processing ended: Sun Feb 16 04:11:08 2020
-    Info: Elapsed time: 00:00:12
+    Info: Processing ended: Wed Feb 26 23:21:05 2020
+    Info: Elapsed time: 00:00:15
     Info: Total CPU time (on all processors): 00:00:20
 
 

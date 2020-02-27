@@ -15,8 +15,6 @@ reg write_flag;
 initial 
 	begin 
 		registers[0] = 32'd0;
-		registers[30] = 32'd256;
-		registers[29] = 32'd256;
 	end 
 
 always@(negedge clock)

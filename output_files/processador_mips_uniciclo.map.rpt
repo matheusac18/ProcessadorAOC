@@ -1,5 +1,5 @@
 Analysis & Synthesis report for processador_mips_uniciclo
-Sun Feb 16 04:10:55 2020
+Wed Feb 26 23:20:49 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -27,13 +27,14 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
  19. Port Connectivity Checks: "Display7Segmentos:dez_milhao7seg"
  20. Port Connectivity Checks: "Display7Segmentos:und_milhao7seg"
  21. Port Connectivity Checks: "ConversorBCD:BCDConverterPC"
- 22. Port Connectivity Checks: "ALU:ULA"
- 23. Port Connectivity Checks: "Mux4_5bits:MuxBancoRegistrador"
- 24. Port Connectivity Checks: "ADD:IncrementaPC"
- 25. Post-Synthesis Netlist Statistics for Top Partition
- 26. Elapsed Time Per Partition
- 27. Analysis & Synthesis Messages
- 28. Analysis & Synthesis Suppressed Messages
+ 22. Port Connectivity Checks: "DataMemory:MemoriaDados"
+ 23. Port Connectivity Checks: "ALU:ULA"
+ 24. Port Connectivity Checks: "Mux4_5bits:MuxBancoRegistrador"
+ 25. Port Connectivity Checks: "ADD:IncrementaPC"
+ 26. Post-Synthesis Netlist Statistics for Top Partition
+ 27. Elapsed Time Per Partition
+ 28. Analysis & Synthesis Messages
+ 29. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -59,7 +60,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Feb 16 04:10:55 2020       ;
+; Analysis & Synthesis Status        ; Successful - Wed Feb 26 23:20:49 2020       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; processador_mips_uniciclo                   ;
 ; Top-level Entity Name              ; CPU                                         ;
@@ -270,6 +271,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------------------------------------+---------------------------------------------+
 ; Register name                                    ; Reason for Removal                          ;
 +--------------------------------------------------+---------------------------------------------+
+; DataMemory:MemoriaDados|addr_reg[8,9]            ; Stuck at GND due to stuck port data_in      ;
 ; IOModule:EntradaSaida|mem_out[0..31]             ; Stuck at GND due to stuck port clock_enable ;
 ; RegisterBank:BancoRegistradores|write_flag       ; Stuck at VCC due to stuck port data_in      ;
 ; RegisterBank:BancoRegistradores|write_addr[0..4] ; Stuck at GND due to stuck port data_in      ;
@@ -1299,42 +1301,46 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; RegisterBank:BancoRegistradores|registers~29     ; Stuck at GND due to stuck port data_in      ;
 ; RegisterBank:BancoRegistradores|registers~30     ; Stuck at GND due to stuck port data_in      ;
 ; RegisterBank:BancoRegistradores|registers~31     ; Stuck at GND due to stuck port data_in      ;
-; Total Number of Removed Registers = 1064         ;                                             ;
+; Total Number of Removed Registers = 1066         ;                                             ;
 +--------------------------------------------------+---------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                  ;
-+---------------------------------------------+--------------------------------+-----------------------------------------------+
-; Register name                               ; Reason for Removal             ; Registers Removed due to This Register        ;
-+---------------------------------------------+--------------------------------+-----------------------------------------------+
-; RegisterBank:BancoRegistradores|registers~3 ; Stuck at GND                   ; RegisterBank:BancoRegistradores|registers~8,  ;
-;                                             ; due to stuck port data_in      ; RegisterBank:BancoRegistradores|registers~13, ;
-;                                             ;                                ; RegisterBank:BancoRegistradores|registers~18, ;
-;                                             ;                                ; RegisterBank:BancoRegistradores|registers~23, ;
-;                                             ;                                ; RegisterBank:BancoRegistradores|registers~28  ;
-; RegisterBank:BancoRegistradores|registers~4 ; Stuck at GND                   ; RegisterBank:BancoRegistradores|registers~9,  ;
-;                                             ; due to stuck port data_in      ; RegisterBank:BancoRegistradores|registers~14, ;
-;                                             ;                                ; RegisterBank:BancoRegistradores|registers~19, ;
-;                                             ;                                ; RegisterBank:BancoRegistradores|registers~24, ;
-;                                             ;                                ; RegisterBank:BancoRegistradores|registers~29  ;
-; RegisterBank:BancoRegistradores|registers~5 ; Stuck at GND                   ; RegisterBank:BancoRegistradores|registers~10, ;
-;                                             ; due to stuck port data_in      ; RegisterBank:BancoRegistradores|registers~15, ;
-;                                             ;                                ; RegisterBank:BancoRegistradores|registers~20, ;
-;                                             ;                                ; RegisterBank:BancoRegistradores|registers~25, ;
-;                                             ;                                ; RegisterBank:BancoRegistradores|registers~30  ;
-; RegisterBank:BancoRegistradores|registers~6 ; Stuck at GND                   ; RegisterBank:BancoRegistradores|registers~11, ;
-;                                             ; due to stuck port data_in      ; RegisterBank:BancoRegistradores|registers~16, ;
-;                                             ;                                ; RegisterBank:BancoRegistradores|registers~21, ;
-;                                             ;                                ; RegisterBank:BancoRegistradores|registers~26, ;
-;                                             ;                                ; RegisterBank:BancoRegistradores|registers~31  ;
-; RegisterBank:BancoRegistradores|registers~7 ; Stuck at GND                   ; RegisterBank:BancoRegistradores|registers~12, ;
-;                                             ; due to stuck port data_in      ; RegisterBank:BancoRegistradores|registers~17, ;
-;                                             ;                                ; RegisterBank:BancoRegistradores|registers~22, ;
-;                                             ;                                ; RegisterBank:BancoRegistradores|registers~27  ;
-; StateMachine:stm|r0                         ; Stuck at GND                   ; StateMachine:stm|halt_interno                 ;
-;                                             ; due to stuck port clock_enable ;                                               ;
-+---------------------------------------------+--------------------------------+-----------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                        ;
++---------------------------------------------+--------------------------------+---------------------------------------------------------------------+
+; Register name                               ; Reason for Removal             ; Registers Removed due to This Register                              ;
++---------------------------------------------+--------------------------------+---------------------------------------------------------------------+
+; DataMemory:MemoriaDados|addr_reg[8]         ; Stuck at GND                   ; IOModule:EntradaSaida|mem_out[6], IOModule:EntradaSaida|mem_out[5], ;
+;                                             ; due to stuck port data_in      ; IOModule:EntradaSaida|mem_out[4], IOModule:EntradaSaida|mem_out[3], ;
+;                                             ;                                ; IOModule:EntradaSaida|mem_out[2], IOModule:EntradaSaida|mem_out[1], ;
+;                                             ;                                ; IOModule:EntradaSaida|mem_out[0]                                    ;
+; RegisterBank:BancoRegistradores|registers~3 ; Stuck at GND                   ; RegisterBank:BancoRegistradores|registers~8,                        ;
+;                                             ; due to stuck port data_in      ; RegisterBank:BancoRegistradores|registers~13,                       ;
+;                                             ;                                ; RegisterBank:BancoRegistradores|registers~18,                       ;
+;                                             ;                                ; RegisterBank:BancoRegistradores|registers~23,                       ;
+;                                             ;                                ; RegisterBank:BancoRegistradores|registers~28                        ;
+; RegisterBank:BancoRegistradores|registers~4 ; Stuck at GND                   ; RegisterBank:BancoRegistradores|registers~9,                        ;
+;                                             ; due to stuck port data_in      ; RegisterBank:BancoRegistradores|registers~14,                       ;
+;                                             ;                                ; RegisterBank:BancoRegistradores|registers~19,                       ;
+;                                             ;                                ; RegisterBank:BancoRegistradores|registers~24,                       ;
+;                                             ;                                ; RegisterBank:BancoRegistradores|registers~29                        ;
+; RegisterBank:BancoRegistradores|registers~5 ; Stuck at GND                   ; RegisterBank:BancoRegistradores|registers~10,                       ;
+;                                             ; due to stuck port data_in      ; RegisterBank:BancoRegistradores|registers~15,                       ;
+;                                             ;                                ; RegisterBank:BancoRegistradores|registers~20,                       ;
+;                                             ;                                ; RegisterBank:BancoRegistradores|registers~25,                       ;
+;                                             ;                                ; RegisterBank:BancoRegistradores|registers~30                        ;
+; RegisterBank:BancoRegistradores|registers~6 ; Stuck at GND                   ; RegisterBank:BancoRegistradores|registers~11,                       ;
+;                                             ; due to stuck port data_in      ; RegisterBank:BancoRegistradores|registers~16,                       ;
+;                                             ;                                ; RegisterBank:BancoRegistradores|registers~21,                       ;
+;                                             ;                                ; RegisterBank:BancoRegistradores|registers~26,                       ;
+;                                             ;                                ; RegisterBank:BancoRegistradores|registers~31                        ;
+; RegisterBank:BancoRegistradores|registers~7 ; Stuck at GND                   ; RegisterBank:BancoRegistradores|registers~12,                       ;
+;                                             ; due to stuck port data_in      ; RegisterBank:BancoRegistradores|registers~17,                       ;
+;                                             ;                                ; RegisterBank:BancoRegistradores|registers~22,                       ;
+;                                             ;                                ; RegisterBank:BancoRegistradores|registers~27                        ;
+; StateMachine:stm|r0                         ; Stuck at GND                   ; StateMachine:stm|halt_interno                                       ;
+;                                             ; due to stuck port clock_enable ;                                                                     ;
++---------------------------------------------+--------------------------------+---------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -1407,7 +1413,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Parameter Name ; Value ; Type                                        ;
 +----------------+-------+---------------------------------------------+
 ; DATA_WIDTH     ; 32    ; Signed Integer                              ;
-; ADDR_WIDTH     ; 8     ; Signed Integer                              ;
+; ADDR_WIDTH     ; 10    ; Signed Integer                              ;
 +----------------+-------+---------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -1528,6 +1534,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
 
 
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DataMemory:MemoriaDados"                                                                                                                     ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                       ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; addr ; Input ; Warning  ; Input port expression (8 bits) is smaller than the input port (10 bits) it drives.  Extra input bit(s) "addr[9..8]" will be connected to GND. ;
++------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "ALU:ULA"                                                                                                                                      ;
 +-------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1595,7 +1610,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sun Feb 16 04:10:45 2020
+    Info: Processing started: Wed Feb 26 23:20:38 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off processador_mips_uniciclo -c processador_mips_uniciclo
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file registerbank.v
@@ -1735,7 +1750,7 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "DataMemory:MemoriaDados|altsyncram:ram_rtl_0|altsyncram_vf31:auto_generated|ram_block1a29" File: C:/Users/Matheus/Documents/GitHub/ProcessadorMIPS/db/altsyncram_vf31.tdf Line: 644
         Warning (14320): Synthesized away node "DataMemory:MemoriaDados|altsyncram:ram_rtl_0|altsyncram_vf31:auto_generated|ram_block1a30" File: C:/Users/Matheus/Documents/GitHub/ProcessadorMIPS/db/altsyncram_vf31.tdf Line: 665
         Warning (14320): Synthesized away node "DataMemory:MemoriaDados|altsyncram:ram_rtl_0|altsyncram_vf31:auto_generated|ram_block1a31" File: C:/Users/Matheus/Documents/GitHub/ProcessadorMIPS/db/altsyncram_vf31.tdf Line: 686
-Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (12241): 5 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "inputInst" is stuck at GND File: C:/Users/Matheus/Documents/GitHub/ProcessadorMIPS/CPU.v Line: 6
     Warning (13410): Pin "outputInst" is stuck at GND File: C:/Users/Matheus/Documents/GitHub/ProcessadorMIPS/CPU.v Line: 6
@@ -1811,8 +1826,8 @@ Info (21057): Implemented 421 device resources after synthesis - the final resou
     Info (21061): Implemented 343 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 115 warnings
     Info: Peak virtual memory: 4795 megabytes
-    Info: Processing ended: Sun Feb 16 04:10:55 2020
-    Info: Elapsed time: 00:00:10
+    Info: Processing ended: Wed Feb 26 23:20:49 2020
+    Info: Elapsed time: 00:00:11
     Info: Total CPU time (on all processors): 00:00:19
 
 
