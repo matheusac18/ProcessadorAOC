@@ -1,6 +1,6 @@
 EDA Netlist Writer report for processador_mips_uniciclo
-Wed Jun 19 11:10:39 2019
-Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
+Mon May 11 16:06:44 2020
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
 ---------------------
@@ -17,7 +17,7 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2017  Intel Corporation. All rights reserved.
+Copyright (C) 2018  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -36,7 +36,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Wed Jun 19 11:10:39 2019 ;
+; EDA Netlist Writer Status ; Successful - Mon May 11 16:06:44 2020 ;
 ; Revision Name             ; processador_mips_uniciclo             ;
 ; Top-level Entity Name     ; CPU                                   ;
 ; Family                    ; Cyclone IV E                          ;
@@ -65,13 +65,13 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------------------------------+---------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                                                      ;
-+-----------------------------------------------------------------------------------------------------------------+
-; Generated Files                                                                                                 ;
-+-----------------------------------------------------------------------------------------------------------------+
-; /home/matheus.castro/Área de trabalho/processador_mips_uniciclo7/simulation/qsim//processador_mips_uniciclo.vo ;
-+-----------------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                      ;
++-------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                 ;
++-------------------------------------------------------------------------------------------------+
+; C:/Users/Matheus/Documents/GitHub/ProcessadorMIPS/simulation/qsim//processador_mips_uniciclo.vo ;
++-------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -79,8 +79,8 @@ refer to the applicable agreement for further details.
 +-----------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
-    Info: Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
-    Info: Copyright (C) 2017  Intel Corporation. All rights reserved.
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Copyright (C) 2018  Intel Corporation. All rights reserved.
     Info: Your use of Intel Corporation's design tools, logic functions 
     Info: and other software and tools, and its AMPP partner logic 
     Info: functions, and any output files from any of the foregoing 
@@ -93,12 +93,12 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Wed Jun 19 11:10:38 2019
-Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="/home/matheus.castro/Área de trabalho/processador_mips_uniciclo7/simulation/qsim/" processador_mips_uniciclo -c processador_mips_uniciclo
-Info (204019): Generated file processador_mips_uniciclo.vo in folder "/home/matheus.castro/Área de trabalho/processador_mips_uniciclo7/simulation/qsim//" for EDA simulation tool
+    Info: Processing started: Mon May 11 16:06:43 2020
+Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=C:/Users/Matheus/Documents/GitHub/ProcessadorMIPS/simulation/qsim/ processador_mips_uniciclo -c processador_mips_uniciclo
+Info (204019): Generated file processador_mips_uniciclo.vo in folder "C:/Users/Matheus/Documents/GitHub/ProcessadorMIPS/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 1051 megabytes
-    Info: Processing ended: Wed Jun 19 11:10:39 2019
+    Info: Peak virtual memory: 4645 megabytes
+    Info: Processing ended: Mon May 11 16:06:44 2020
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
