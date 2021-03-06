@@ -15,12 +15,25 @@ reg write_flag;
 initial 
 	begin 
 		registers[0] = 32'd0;
-		registers[30] = 32'd256;
-		registers[29] = 32'd256;
+		
+		//registradores do SO
+		registers[1] = 32'd0;
+		registers[2] = 32'd66;
+		registers[3] = 32'd66;
+		registers[5] = 32'd0;
+		registers[6] = 32'd0;
+		
+		//registers[20] = 32'd0;
+		//registers[21] = 32'd0;
+		//registers[18] = 32'd256;
+		//registers[19] = 32'd256;
+		//registers[30] = 32'd256;
+		//registers[29] = 32'd256;
 	end 
 
 always@(negedge clock)
 	begin
+		
 		if (write_flag==1) 
 			begin
 				registers[write_addr] <= write_in;
@@ -29,6 +42,7 @@ always@(negedge clock)
 
 always@(posedge clock)
 	begin
+		//registers[0] = 32'b00000000000000000000000000000000;
 		write_addr <= write_end;
 		write_flag <= RegWrite;
 	end

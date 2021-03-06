@@ -1,9 +1,9 @@
-module ControlUnit(OpCode, funct, halt, RegWrite, ALUSrc, Branch, Jump, JumpR, MemOp, OpIO, RegDst, MemToReg, ALUOp, outputInst, inputInst);
+module ControlUnit(OpCode, funct, halt, RegWrite, ALUSrc, Branch, Jump, JumpR, MemOp, OpIO, RegDst, MemToReg, ALUOp, outputInst, inputInst, MemToReg2,enableTimer, HdWrite, BufferHdWrite, InstMemWrite,JalJumpReg,opPID);
 
 input [5:0] OpCode, funct;
 
-output reg halt, RegWrite, ALUSrc, Branch, Jump, JumpR, MemOp, OpIO, outputInst, inputInst;
-output reg [1:0] RegDst, MemToReg;
+output reg halt, RegWrite, ALUSrc, Branch, Jump, JumpR, MemOp, OpIO, outputInst, inputInst, HdWrite, BufferHdWrite, InstMemWrite,JalJumpReg,opPID;
+output reg [1:0] RegDst, MemToReg, MemToReg2, enableTimer;
 output reg [4:0] ALUOp;
 
 always@(*)
@@ -14,20 +14,33 @@ begin
 		6'b000000://instruções do tipo R
 			begin
 				halt <= 0;
-				RegWrite <= 1;
+				
 				RegDst <= 2'b11;
 				ALUSrc <= 0;
 				Branch <= 0;
 				Jump <= 0;
-				if(funct == 6'b001100)
+				if(funct == 6'b001100)//JR
+				begin
 					JumpR <=1;
+					RegWrite <= 0;
+				end
 				else
+				begin
 					JumpR <=0;
+					RegWrite <= 1;
+				end
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b10;
+				MemToReg2 <= 2'b00;
 				inputInst = 0;
 				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 				case(funct)
 					6'b000001: ALUOp <= 5'b00000;//soma
 					6'b000010: ALUOp <= 5'b00001;//sub
@@ -60,9 +73,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b10;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00000;
 				inputInst = 0;
 				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b000010://multi
 			begin
@@ -76,9 +96,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b10;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00011;
 				inputInst = 0;
 				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b000011://divi
 			begin
@@ -92,9 +119,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b10;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00010;
 				inputInst = 0;
 				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b000100://andi
 			begin
@@ -108,9 +142,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b10;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00100;
 				inputInst = 0;
 				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b000101://bltz
 			begin
@@ -124,9 +165,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'bXX;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b01010;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b000110://BGTZ
 			begin
@@ -140,9 +188,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'bXX;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b01011;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b000111://BEQZ
 			begin
@@ -156,9 +211,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'bXX;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b01100;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b001000://BEQ
 			begin
@@ -172,9 +234,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'bXX;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b01101;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b001001://BNE
 			begin
@@ -188,9 +257,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'bXX;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b01110;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b010101://LUI
 			begin
@@ -204,9 +280,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b10;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b10000;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b001010://LW
 			begin
@@ -220,9 +303,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b00;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00000;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b001011://SW
 			begin
@@ -236,9 +326,16 @@ begin
 				MemOp <= 1;
 				OpIO <= 0;
 				MemToReg <= 2'bXX;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00000;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b001100://ORI
 			begin
@@ -252,9 +349,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b10;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00101;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b001101://SLTI
 			begin
@@ -268,9 +372,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b10;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00111;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b001110://MODI
 			begin
@@ -284,9 +395,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b10;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b01111;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b001111://jump
 			begin
@@ -300,9 +418,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b00;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00000;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b010000://jal
 			begin
@@ -316,9 +441,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b01;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00000;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b010001://nop
 			begin
@@ -332,9 +464,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b00;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00000;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b010010://halt
 			begin
@@ -348,9 +487,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b00;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00000;
 				inputInst = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b010011://input
 			begin
@@ -364,9 +510,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b11;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00000;
 				inputInst = 1;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b010100://output
 			begin
@@ -380,9 +533,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 1;
 				MemToReg <= 2'b00;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00000;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 1;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b010110://SGTI
 			begin
@@ -396,9 +556,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b10;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b10001;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b010111://SLETI
 			begin
@@ -412,9 +579,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b10;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b10010;
 				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
 				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b011000://SGETI
 			begin
@@ -428,9 +602,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b10;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b10011;
 				inputInst = 0;
 				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b011001://SETI
 			begin
@@ -444,9 +625,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b10;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b10100;
 				inputInst = 0;
 				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 		6'b011010://SDTI
 			begin
@@ -460,9 +648,244 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b10;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b10101;
 				inputInst = 0;
 				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
+			end
+		6'b011011://GETPC
+			begin
+				halt <= 0;
+				RegWrite <= 1;
+				RegDst <= 2'b01;
+				ALUSrc <= 0;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b0;
+				ALUOp <= 5'b00000;
+				inputInst = 0;
+				MemToReg2 <= 2'b01;
+				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
+			end
+		6'b011100://enableTimer
+			begin
+				halt <= 0;
+				RegWrite <= 0;
+				RegDst <= 2'b01;
+				ALUSrc <= 0;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b0;
+				ALUOp <= 5'b00000;
+				inputInst = 0;
+				MemToReg2 <= 2'b00;
+				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b11;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
+			end
+		6'b011101://disableTimer
+			begin
+				halt <= 0;
+				RegWrite <= 0;
+				RegDst <= 2'b00;
+				ALUSrc <= 0;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b0;
+				ALUOp <= 5'b00000;
+				inputInst = 0;
+				MemToReg2 <= 2'b00;
+				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b10;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
+			end
+		6'b011110://BufferToHd
+			begin
+				halt <= 0;
+				RegWrite <= 0;
+				RegDst <= 2'b00;
+				ALUSrc <= 0;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b0;
+				ALUOp <= 5'b00000;
+				inputInst = 0;
+				MemToReg2 <= 2'b00;
+				outputInst = 0;
+				HdWrite = 1;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
+			end
+		6'b011111://RegToBuffer
+			begin
+				halt <= 0;
+				RegWrite <= 0;
+				RegDst <= 2'b00;
+				ALUSrc <= 0;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b0;
+				ALUOp <= 5'b00000;
+				inputInst = 0;
+				MemToReg2 <= 2'b00;
+				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 1;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
+			end
+		6'b100000://HdToReg
+			begin
+				halt <= 0;
+				RegWrite <= 1;
+				RegDst <= 2'b11;
+				ALUSrc <= 0;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b0;
+				ALUOp <= 5'b00000;
+				inputInst = 0;
+				MemToReg2 <= 2'b10;
+				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
+			end
+		6'b100001://RegToInst
+			begin
+				halt <= 0;
+				RegWrite <= 0;
+				RegDst <= 2'b00;
+				ALUSrc <= 1;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b0;
+				ALUOp <= 5'b00000;
+				inputInst = 0;
+				MemToReg2 <= 2'b00;
+				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 1;
+				JalJumpReg <= 0;
+			end
+		6'b100010://JumpAndLinkReg
+			begin
+				halt <= 0;
+				RegWrite <= 1;
+				RegDst <= 2'b10;
+				ALUSrc <= 0;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b01;
+				MemToReg2 <= 2'b00;
+				ALUOp <= 5'b00000;
+				inputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				outputInst = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 1;
+			end
+		6'b100011://JumpReg
+			begin
+				halt <= 0;
+				RegWrite <= 0;
+				RegDst <= 2'b00;
+				ALUSrc <= 0;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b0;
+				ALUOp <= 5'b00000;
+				inputInst = 0;
+				MemToReg2 <= 2'b00;
+				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <=1;
+				opPID <= 0;
+			end
+		6'b100100://ShowPID
+			begin
+				halt <= 0;
+				RegWrite <= 0;
+				RegDst <= 2'b00;
+				ALUSrc <= 0;
+				Branch <= 0;
+				Jump <= 0;
+				JumpR <=0;
+				MemOp <= 0;
+				OpIO <= 0;
+				MemToReg <= 2'b0;
+				ALUOp <= 5'b00000;
+				inputInst = 0;
+				MemToReg2 <= 2'b00;
+				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <=0;
+				opPID <= 1;
 			end
 		default:
 			begin
@@ -476,9 +899,16 @@ begin
 				MemOp <= 0;
 				OpIO <= 0;
 				MemToReg <= 2'b00;
+				MemToReg2 <= 2'b00;
 				ALUOp <= 5'b00000;
 				inputInst = 0;
 				outputInst = 0;
+				HdWrite = 0;
+				BufferHdWrite = 0;
+				enableTimer <=2'b00;
+				InstMemWrite <= 0;
+				JalJumpReg <= 0;
+				opPID <= 0;
 			end
 			
 	endcase

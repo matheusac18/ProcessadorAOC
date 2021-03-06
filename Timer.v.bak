@@ -1,0 +1,24 @@
+module Timer(clk, quantum_in, pc_in, active, pc_out);
+
+input [31:0] pc_in;
+input clk, reset, halt;
+
+output reg [31:0] pc_out;
+
+
+always@(negedge clk)
+begin
+	if(reset==1)
+		begin
+			pc_out = 0;
+		end
+	else if(halt == 1)
+		begin
+		end
+	else
+		begin
+			pc_out = pc_in;
+		end
+end
+
+endmodule

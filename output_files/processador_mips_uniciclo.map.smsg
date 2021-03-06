@@ -1,2 +1,4 @@
-Warning (10268): Verilog HDL information at ALU.v(13): always construct contains both blocking and non-blocking assignments File: C:/Users/Matheus/Documents/GitHub/ProcessadorMIPS/ALU.v Line: 13
-Warning (10268): Verilog HDL information at ControlUnit.v(12): always construct contains both blocking and non-blocking assignments File: C:/Users/Matheus/Documents/GitHub/ProcessadorMIPS/ControlUnit.v Line: 12
+Warning (10268): Verilog HDL information at ALU.v(13): always construct contains both blocking and non-blocking assignments File: C:/Users/Matheus/OneDrive - unifesp.br/Documents/GitHub/ProcessadorAOC/ALU.v Line: 13
+Info (10281): Verilog HDL Declaration information at CPU.v(126): object "unidade7PID" differs only in case from object "unidade7pid" in the same scope File: C:/Users/Matheus/OneDrive - unifesp.br/Documents/GitHub/ProcessadorAOC/CPU.v Line: 126
+Warning (10268): Verilog HDL information at ControlUnit.v(12): always construct contains both blocking and non-blocking assignments File: C:/Users/Matheus/OneDrive - unifesp.br/Documents/GitHub/ProcessadorAOC/ControlUnit.v Line: 12
+Warning (10268): Verilog HDL information at Timer.v(16): always construct contains both blocking and non-blocking assignments File: C:/Users/Matheus/OneDrive - unifesp.br/Documents/GitHub/ProcessadorAOC/Timer.v Line: 16

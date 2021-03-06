@@ -3,75 +3,111 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'DivisorClock:ClkDiv|clk_out'
-Slack : -6.671
-TNS   : -554.242
+Slack : -137.378
+TNS   : -7393.907
 
 Type  : Slow 1200mV 85C Model Setup 'clk50M'
-Slack : -4.155
-TNS   : -104.706
+Slack : -4.979
+TNS   : -235.541
+
+Type  : Slow 1200mV 85C Model Setup 'InstructionMemory:MemoriaInstrucao|q[26]'
+Slack : -4.391
+TNS   : -4.391
+
+Type  : Slow 1200mV 85C Model Hold 'InstructionMemory:MemoriaInstrucao|q[26]'
+Slack : -0.249
+TNS   : -0.249
 
 Type  : Slow 1200mV 85C Model Hold 'DivisorClock:ClkDiv|clk_out'
-Slack : 0.423
+Slack : 0.405
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'clk50M'
-Slack : 0.632
+Slack : 0.641
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk50M'
 Slack : -3.000
-TNS   : -45.405
+TNS   : -91.911
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'DivisorClock:ClkDiv|clk_out'
 Slack : -2.693
-TNS   : -180.392
+TNS   : -655.648
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'InstructionMemory:MemoriaInstrucao|q[26]'
+Slack : 0.431
+TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'DivisorClock:ClkDiv|clk_out'
-Slack : -5.947
-TNS   : -495.548
+Slack : -124.069
+TNS   : -6745.210
 
 Type  : Slow 1200mV 0C Model Setup 'clk50M'
-Slack : -3.747
-TNS   : -93.616
+Slack : -4.417
+TNS   : -208.827
+
+Type  : Slow 1200mV 0C Model Setup 'InstructionMemory:MemoriaInstrucao|q[26]'
+Slack : -3.942
+TNS   : -3.942
+
+Type  : Slow 1200mV 0C Model Hold 'InstructionMemory:MemoriaInstrucao|q[26]'
+Slack : -0.302
+TNS   : -0.302
 
 Type  : Slow 1200mV 0C Model Hold 'DivisorClock:ClkDiv|clk_out'
-Slack : 0.381
+Slack : 0.355
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'clk50M'
-Slack : 0.578
+Slack : 0.587
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk50M'
 Slack : -3.000
-TNS   : -45.405
+TNS   : -91.823
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'DivisorClock:ClkDiv|clk_out'
 Slack : -2.649
-TNS   : -180.216
+TNS   : -651.864
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'InstructionMemory:MemoriaInstrucao|q[26]'
+Slack : 0.453
+TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'DivisorClock:ClkDiv|clk_out'
-Slack : -2.835
-TNS   : -218.372
+Slack : -67.343
+TNS   : -3553.589
+
+Type  : Fast 1200mV 0C Model Setup 'InstructionMemory:MemoriaInstrucao|q[26]'
+Slack : -1.837
+TNS   : -1.837
 
 Type  : Fast 1200mV 0C Model Setup 'clk50M'
-Slack : -1.590
-TNS   : -31.351
+Slack : -1.777
+TNS   : -73.724
+
+Type  : Fast 1200mV 0C Model Hold 'InstructionMemory:MemoriaInstrucao|q[26]'
+Slack : 0.008
+TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'DivisorClock:ClkDiv|clk_out'
-Slack : 0.190
+Slack : 0.180
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clk50M'
-Slack : 0.287
+Slack : 0.267
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk50M'
 Slack : -3.000
-TNS   : -38.054
+TNS   : -74.485
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'DivisorClock:ClkDiv|clk_out'
 Slack : -1.000
-TNS   : -136.000
+TNS   : -416.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'InstructionMemory:MemoriaInstrucao|q[26]'
+Slack : 0.354
+TNS   : 0.000
 
 ------------------------------------------------------------
